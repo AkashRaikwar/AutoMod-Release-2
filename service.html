@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+</head>
+<body>
+    <h1>Services Offered</h1>
+
+    <div id="services">
+        <div>
+            <h2>Preventive Maintenance Service</h2>
+            <button onclick="redirectToService('preventive-maintenance-service')">More Details</button>
+        </div>
+        <div>
+            <h2>Body Repair Service</h2>
+            <button onclick="redirectToService('body-repair-service')">More Details</button>
+        </div>
+        <div>
+            <h2>Car Care Service</h2>
+            <button onclick="redirectToService('car-care-service')">More Details</button>
+        </div>
+    </div>
+
+    <div id="countdown">
+        Offer expires in: <span id="timer">10:00</span>
+    </div>
+
+    <script>
+        // Countdown timer
+        var countdown = document.getElementById("timer");
+        var timer = 600; // 10 minutes in seconds
+
+        function updateTimer() {
+            var minutes = Math.floor(timer / 60);
+            var seconds = timer % 60;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            countdown.textContent = minutes + ":" + seconds;
+
+            if (timer > 0) {
+                timer--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                countdown.textContent = "Offer expired";
+            }
+        }
+
+        updateTimer();
+
+        // Function to redirect to service page
+        function redirectToService(serviceName) {
+            window.location.href = serviceName + ".html"; // Assuming each service has its own HTML page
+        }
+    </script>
+</body>
+<style>
+    body{
+        margin:0;
+        font-family: 'Times New Roman', Times, serif;
+        background: linear-gradient(to bottom,rgb(168, 216, 241), rgb(79, 76, 165));
+
+    }
+</style>
+</html>

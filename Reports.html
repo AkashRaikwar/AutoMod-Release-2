@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Submissions</title>
+</head>
+<body>
+    <h1>Booking Submissions</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Car Model</th>
+                <th>Car Number</th>
+                <th>Chasis Number</th>
+                <th>Service</th>
+                <th>Booking Date</th>
+                <th>Booking Time</th>
+            </tr>
+        </thead>
+        <tbody id="submissionsTableBody">
+            <!-- Submissions will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Load submissions from local storage
+        var submissions = JSON.parse(localStorage.getItem('submissions')) || [];
+
+        // Function to display submissions in table
+        function displaySubmissions() {
+            var submissionsTableBody = document.getElementById('submissionsTableBody');
+
+            submissions.forEach(function(submission) {
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${submission.username}</td>
+                    <td>${submission.email}</td>
+                    <td>${submission.phone}</td>
+                    <td>${submission.carmodel}</td>
+                    <td>${submission.carno}</td>
+                    <td>${submission.chasis}</td>
+                    <td>${submission.service}</td>
+                    <td>${submission.booking_date}</td>
+                    <td>${submission.booking_time}</td>
+                `;
+                submissionsTableBody.appendChild(row);
+            });
+        }
+
+        // Call the function to display submissions when the page loads
+        displaySubmissions();
+    </script>
+</body>
+<style>
+    body{
+        margin:0;
+        font-family: 'Times New Roman', Times, serif;
+        background: linear-gradient(to bottom,rgb(168, 216, 241), rgb(79, 76, 165));
+    }
+</style>
+</html>
